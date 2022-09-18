@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="5" time="25.978">
+    <testcase classname="US1001 A101 sitesine gider" name="TC01 A101 sitesine gider" time="9.204">
+        <system-out><![CDATA[When kullanici "A101Url" sayfasina gider....................................passed
+And "A101Title" sayfasinda oldugunu kontrol eder............................passed
+Then cookies kabul eder.....................................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="US1001 A101 sitesine gider" name="TC02 Giyim-Aksesuar_Kadın İç Giyim_Dizaltı Çorap bölümüne gider" time="2.94">
+        <system-out><![CDATA[When Kadın İç Giyim kismini secer...........................................passed
+Then Dizaltı Çorapi secer...................................................passed
+Then sayfa Title indan dogru sayfada oldugunu kontol eder...................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="US1001 A101 sitesine gider" name="TC03 siyah renk secilir ve gelen sonuclarin siyah oldugu dogrulanir ve herhangi biri sepete eklenir" time="3.714">
+        <system-out><![CDATA[When Renk olarak "renkSecim" secilir........................................passed
+Then gelen sonuclarin siyah icerdigi kontol edilir..........................passed
+Then "secilecekUrunIndex" secilir ve sepete eklenir.........................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="US1001 A101 sitesine gider" name="sepete eklenen urun kotrol edilir odeme ekranina gitme" time="2.828">
+        <system-out><![CDATA[When siyah renk secilir.....................................................passed
+Then siyah renk secildigi kontrol edilir....................................passed
+Then sepete ekleme yapilir..................................................passed
+Then alis sepeti goruntuleye tiklanir.......................................passed
+Then sepeti onayla tiklanir.................................................passed
+]]></system-out>
+    </testcase>
+    <testcase classname="US1001 A101 sitesine gider" name="uye olmadan mail girilir ve adres bilgileri girilir" time="7.116">
+        <system-out><![CDATA[When uye olmadan devam et tiklanir..........................................passed
+Then "mail" adresi girilir..................................................passed
+Then yeni adres olustur tiklanir............................................passed
+Then "adres" basligi girilir................................................passed
+Then "isim" bilgisi girer...................................................passed
+Then "soyisim" girilir......................................................passed
+Then "ceptelefonu" numarasi girilir.........................................passed
+Then il bilgisi girilir.....................................................passed
+Then ilce ile girilir.......................................................passed
+Then mahalle adi girilir....................................................passed
+Then "adresbasligi"  bilgisi girilir........................................passed
+Then "posta" kodu girilir...................................................passed
+Then kaydet butonuna tiklanir...............................................passed
+When adresi kaydettigini dogrular...........................................passed
+Then Mng kargo secilir......................................................passed
+Then adres kargo kaydet ve devam et.........................................passed
+When odeme sayfasina geldini kontrol eder...................................passed
+Then chromu kapatır.........................................................passed
+]]></system-out>
+    </testcase>
+</testsuite>
