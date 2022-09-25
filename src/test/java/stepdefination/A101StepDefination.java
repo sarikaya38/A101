@@ -1,5 +1,6 @@
 package stepdefination;
 
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -12,9 +13,11 @@ import utilities.Driver;
 
 
 public class A101StepDefination {
+    Faker faker = new Faker();
     A101Page a101Page = new A101Page();
     Actions actions = new Actions(Driver.getDriver());
     Select select;
+
     @When("kullanici {string} sayfasina gider")
     public void kullanici_sayfasina_gider(String siteUrl) throws InterruptedException {
         Driver.getDriver().get(ConfigReader.getProperty(siteUrl));
@@ -63,98 +66,109 @@ public class A101StepDefination {
 
     }
 
-    @Then("{string} secilir ve sepete eklenir")
-    public void secilir_ve_sepete_eklenir(String string) {
-a101Page.sepeteEkleme.click();
-    }
+
     @When("siyah renk secilir")
     public void siyah_renk_secilir() {
         a101Page.siyahRenkUrunSecme.click();
     }
+
     @Then("siyah renk secildigi kontrol edilir")
     public void siyah_renk_secildigi_kontrol_edilir() {
-Assert.assertTrue(a101Page.secilenUrunDogrumu.getText().contains("Siyah"));
+        Assert.assertTrue(a101Page.secilenUrunDogrumu.getText().contains("Siyah"));
     }
+
     @Then("sepete ekleme yapilir")
     public void sepete_ekleme_yapilir() {
-a101Page.urunSepeteEkleButonu.click();
+        a101Page.urunSepeteEkleButonu.click();
     }
+
     @Then("alis sepeti goruntuleye tiklanir")
     public void alis_sepeti_goruntuleye_tiklanir() {
-a101Page.urunSepetiGoruntule.click();
+        a101Page.urunSepetiGoruntule.click();
     }
+
     @Then("sepeti onayla tiklanir")
     public void sepeti_onayla_tiklanir() {
-a101Page.urunlerSepetiOnayla.click();
+        a101Page.urunlerSepetiOnayla.click();
     }
+
     @When("uye olmadan devam et tiklanir")
     public void uye_olmadan_devam_et_tiklanir() {
-a101Page.uyeOlmadanDevamEtButonu.click();
+        a101Page.uyeOlmadanDevamEtButonu.click();
     }
+
     @Then("{string} adresi girilir")
     public void adresi_girilir(String mail) {
-a101Page.mailAdresiGirilir.sendKeys(ConfigReader.getProperty(mail)+ Keys.ENTER);
+        a101Page.mailAdresiGirilir.sendKeys(faker.internet().emailAddress() + Keys.ENTER);
     }
+
     @Then("yeni adres olustur tiklanir")
     public void yeni_adres_olustur_tiklanir() {
-  a101Page.yeniAdresOlusturButonu.click();
-   }
-   @Then("{string} basligi girilir")
-    public void basligi_girilir(String adresbasligi) {
-a101Page.adresBasligiBilgisiGirme.sendKeys(ConfigReader.getProperty(adresbasligi));
+        a101Page.yeniAdresOlusturButonu.click();
     }
+
+    @Then("{string} basligi girilir")
+    public void basligi_girilir(String adresbasligi) {
+        a101Page.adresBasligiBilgisiGirme.sendKeys(ConfigReader.getProperty(adresbasligi));
+    }
+
     @Then("{string} bilgisi girer")
     public void bilgisi_girer(String isim) {
-a101Page.adresisimBilgisi.sendKeys(ConfigReader.getProperty(isim));
+        a101Page.adresisimBilgisi.sendKeys(faker.name().firstName());
     }
+
     @Then("{string} girilir")
     public void girilir(String soyisim) {
-        a101Page.adresSoyIsimBilgisi.sendKeys(ConfigReader.getProperty(soyisim));
+        a101Page.adresSoyIsimBilgisi.sendKeys(faker.name().lastName());
     }
+
     @Then("{string} numarasi girilir")
-    public void numarasi_girilir(String ceptelefonu)  {
-a101Page.adresTelefonBilgisi.sendKeys(ConfigReader.getProperty(ceptelefonu));    }
+    public void numarasi_girilir(String ceptelefonu) {
+        a101Page.adresTelefonBilgisi.sendKeys(faker.phoneNumber().cellPhone());
+    }
 
     @Then("{string}  bilgisi girilir")
     public void bilgisi_girilir(String adresbasligi) {
-a101Page.adresAdresBilgisi.sendKeys(ConfigReader.getProperty(adresbasligi));
+        a101Page.adresAdresBilgisi.sendKeys(faker.address().fullAddress());
     }
+
     @Then("{string} kodu girilir")
-    public void kodu_girilir(String posta)  {
-a101Page.adresPostaKoduBilgisi.sendKeys(ConfigReader.getProperty(posta));
+    public void kodu_girilir(String posta) {
+//a101Page.adresPostaKoduBilgisi.sendKeys(ConfigReader.getProperty(posta));
 
     }
+
     @Then("kaydet butonuna tiklanir")
     public void kaydet_butonuna_tiklanir() throws InterruptedException {
-a101Page.adresKaydetButonu.click();
+        a101Page.adresKaydetButonu.click();
 
     }
 
     @Then("il bilgisi girilir")
     public void ilBilgisiGirilir() {
-       select=new Select(a101Page.adresIlBilgisi);
+        select = new Select(a101Page.adresIlBilgisi);
         select.selectByVisibleText("ANKARA");
     }
 
     @Then("ilce ile girilir")
     public void ilceIleGirilir() throws InterruptedException {
-        select=new Select(a101Page.adresIlceBilgisi);
+        select = new Select(a101Page.adresIlceBilgisi);
         select.selectByVisibleText("BALA");
-Thread.sleep(1000);
+        Thread.sleep(1000);
 
     }
 
 
     @Then("mahalle adi girilir")
     public void mahalleAdiGirilir() {
-        select=new Select(a101Page.adresMahalleBilgisi);
+        select = new Select(a101Page.adresMahalleBilgisi);
         select.selectByIndex(4);
     }
 
     @Then("Mng kargo secilir")
     public void mngKargoSecilir() throws InterruptedException {
         Thread.sleep(2000);
-        actions.click(a101Page.mngKargoSecim).perform();
+        actions.click(a101Page.ilkKargoFirmasi).perform();
     }
 
     @Then("adres kargo kaydet ve devam et")
@@ -164,7 +178,7 @@ Thread.sleep(1000);
 
     @Then("chromu kapatır")
     public void chromuKapatır() {
-        Driver.closeDriver();
+        //  Driver.closeDriver();
     }
 
     @When("odeme sayfasina geldini kontrol eder")
@@ -176,4 +190,11 @@ Thread.sleep(1000);
     public void adresiKaydettiginiDogrular() {
         Assert.assertTrue(a101Page.adresKaydettiginiDogrular.isDisplayed());
     }
+
+    @Then("ilk urunu secer ve sepete eklenir")
+    public void ilkUrunuSecerVeSepeteEklenir() {
+        a101Page.sepeteEkleme.click();
+    }
+
 }
+

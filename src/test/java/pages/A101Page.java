@@ -30,7 +30,7 @@ public class A101Page {
 
     @FindBy(xpath = "(//h3[@class='name'])[1]")
     public WebElement urunBasligi;
-    @FindBy(xpath = "//em[@class='icon-sepetekle']")
+    @FindBy(xpath = "//img[@class=' ls-is-cached lazyloaded'][1]")
     public WebElement sepeteEkleme;
 
     @FindBy(xpath = "//span[text()='SİYAH']")
@@ -62,7 +62,7 @@ public WebElement adresBasligiBilgisiGirme;
 public WebElement adresisimBilgisi;
 
 @FindBy(xpath = "(//div[@class='radio'])[3]")
-public WebElement mngKargoSecim;
+public WebElement ilkKargoFirmasi;
 @FindBy(xpath = "//input[@name='last_name']")
 public WebElement adresSoyIsimBilgisi;
     @FindBy(xpath = "//input[@name='phone_number']")

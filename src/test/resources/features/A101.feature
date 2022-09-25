@@ -19,7 +19,7 @@ Feature: US1001 A101 sitesine gider
   Scenario: TC03 siyah renk secilir ve gelen sonuclarin siyah oldugu dogrulanir ve herhangi biri sepete eklenir
     When Renk olarak "renkSecim" secilir
     Then gelen sonuclarin siyah icerdigi kontol edilir
-    Then "secilecekUrunIndex" secilir ve sepete eklenir
+    Then ilk urunu secer ve sepete eklenir
 
   Scenario: sepete eklenen urun kotrol edilir odeme ekranina gitme
 
