@@ -80,7 +80,7 @@ public WebElement adresSoyIsimBilgisi;
     @FindBy(xpath = "//input[@name='postcode']")
     public WebElement adresPostaKoduBilgisi;
 
-@FindBy(xpath = "//button[@class='button green js-set-country js-prevent-emoji']")
+@FindBy(xpath = "(//button[@type='button'])[6]")
     public WebElement adresKaydetButonu;
 @FindBy(xpath = "//button[@class='button block green js-proceed-button']")
     public WebElement adresKargoKaydetVeDevamEtButonu;
